@@ -14,7 +14,7 @@ namespace ECS.Utils
         public static EntityView InstantiateView(this EcsWorld world, int entity, GameObject prefab, Vector3 position, Quaternion rotation)
         {
             var view = Object.Instantiate(prefab, position, rotation).AddComponent<EntityView>();
-            view.SetEntity(entity);
+            view.Init(world, entity);
 
             world.AddComponent<ViewComponent>(entity).view = view;
             world.AddComponent<TransformComponent>(entity).transform = view.transform;
@@ -24,7 +24,7 @@ namespace ECS.Utils
 
         public static void AssignView(this EcsWorld world, int entity, EntityView view)
         {
-            view.SetEntity(entity);
+            view.Init(world, entity);
 
             world.AddComponent<ViewComponent>(entity).view = view;
             world.AddComponent<TransformComponent>(entity).transform = view.transform;
