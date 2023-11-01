@@ -8,5 +8,7 @@ namespace Test
         public Transform playerSpawnPoint;
 
         public AssignGeneratorView[] generatorsSceneHelpers;
+
+        public AssignCollectorView[] collectorsSceneHelpers;
     }
 }

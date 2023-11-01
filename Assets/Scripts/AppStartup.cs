@@ -10,7 +10,7 @@ namespace Test
     public class AppStartup : MonoBehaviour
     {
         [SerializeField] private GameSettings _settings;
-        [SerializeField] private CollectableObjectsConfig _objectsConfig;
+        [SerializeField] private CollectableItemsConfig _objectsConfig;
         [SerializeField] private SceneSettings _sceneSettings;
 
         private IInputService _input;
@@ -42,6 +42,9 @@ namespace Test
                 .Add(new MovementSystem())
                 .Add(new GeneratorInitializationSystem())
                 .Add(new GeneratorProductionSystem())
+                .Add(new CollectorsInitializationSystem())
+                .Add(new CollectorsSpendingSystem())
+                .Add(new PlayerInteractionSystem())
                 .Inject(_settings, _objectsConfig, _sceneSettings, _input)
                 .Init();
         }
