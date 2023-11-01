@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using ECS.View;
 using UnityEngine;
 
-public class PlayerView : EntityView
+namespace Test.Views
 {
-    public Rigidbody rigidbody;
-    public Transform stackableHolder;
+    public class PlayerView : EntityView
+    {
+        public Rigidbody _rigidbody;
+        public Transform stackableHolder;
+    }
 }

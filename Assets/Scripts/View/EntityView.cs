@@ -1,14 +1,17 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-public class EntityView : MonoBehaviour
+namespace ECS.View
 {
-    public EcsWorld World { get; private set; }
-    public int Entity { get; private set; }
-
-    public void Init(EcsWorld world, int entity)
+    public class EntityView : MonoBehaviour
     {
-        Entity = entity;
-        World = world;
+        public EcsWorld World { get; private set; }
+        public int Entity { get; private set; }
+
+        public void Init(EcsWorld world, int entity)
+        {
+            Entity = entity;
+            World = world;
+        }
     }
 }

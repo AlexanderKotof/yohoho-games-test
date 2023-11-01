@@ -1,4 +1,5 @@
 ﻿using ECS.Components;
+using ECS.View;
 using Leopotam.EcsLite;
 using UnityEngine;
 

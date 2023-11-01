@@ -1,4 +1,6 @@
-﻿namespace ECS.Components
+﻿using ECS.View;
+
+namespace ECS.Components
 {
     public struct ViewComponent
     {

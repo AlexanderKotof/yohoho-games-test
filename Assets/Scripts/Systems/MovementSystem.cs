@@ -27,7 +27,9 @@ namespace Test.Systems
         private void MovePlayer(MovementComponent movement, PlayerComponent playerComponent)
         {
             playerComponent.rigidbody.velocity = Vector3.ClampMagnitude(playerComponent.rigidbody.velocity + movement.direction * _settings.Value.Acceleration, _settings.Value.PlayerSpeed);
-            playerComponent.rigidbody.transform.rotation = Quaternion.LookRotation(movement.direction, Vector3.up);
+
+            if (movement.direction != Vector3.zero)
+                playerComponent.rigidbody.transform.rotation = Quaternion.LookRotation(movement.direction, Vector3.up);
         }
     }
 }

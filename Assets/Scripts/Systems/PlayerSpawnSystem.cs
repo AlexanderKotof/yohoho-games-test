@@ -3,6 +3,7 @@ using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Test.Settings;
+using Test.Views;
 using UnityEngine;
 
 namespace Test.Systems
@@ -33,7 +34,7 @@ namespace Test.Systems
             _world.AddComponent<TransformComponent>(entity).transform = view.transform;
 
             ref var player = ref _world.AddComponent<PlayerComponent>(entity);
-            player.rigidbody = view.rigidbody;
+            player.rigidbody = view._rigidbody;
         }
     }
 }
