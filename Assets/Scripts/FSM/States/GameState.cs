@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using Test.Input;
 using Test.Settings;
 using Test.Systems;
+using Test.UI;
 
 namespace Test.FSM.States
 {
@@ -10,28 +11,31 @@ namespace Test.FSM.States
     {
         public IGameStateMachine FSM { get; private set; }
 
-        private GameSettings _settings;
-        private CollectableItemsConfig _objectsConfig;
-        private SceneSettings _sceneSettings;
-        private IInputService _input;
+        private readonly GameSettings _settings;
+        private readonly CollectableItemsConfig _objectsConfig;
+        private readonly SceneSettings _sceneSettings;
+        private readonly UIManager _uiManager;
+        private readonly IInputService _input;
 
         private EcsWorld _world;
         private EcsSystems _systems;
 
-        public GameState(IGameStateMachine fsm, GameSettings gameSettings, CollectableItemsConfig itemsConfig, SceneSettings sceneSettings, IInputService input)
+        public GameState(IGameStateMachine fsm, GameSettings gameSettings, CollectableItemsConfig itemsConfig, SceneSettings sceneSettings, UIManager uiManager, IInputService input)
         {
             FSM = fsm;
 
             _settings = gameSettings;
             _objectsConfig = itemsConfig;
             _sceneSettings = sceneSettings;
-
+            _uiManager = uiManager;
             _input = input;
         }
 
         public void Enter()
         {
             InitializeWorld();
+
+            _uiManager.ShowInGameScreen();
         }
 
         private void InitializeWorld()

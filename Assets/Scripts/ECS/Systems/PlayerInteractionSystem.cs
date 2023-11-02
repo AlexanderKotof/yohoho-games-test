@@ -7,6 +7,7 @@ using Test.Components;
 using Test.Data;
 using Test.Settings;
 using Test.Views;
+using TMPro;
 using UnityEngine;
 
 namespace Test.Systems
@@ -92,15 +93,10 @@ namespace Test.Systems
         private void AddItemToCollectorFromPlayerStack(ref PlayerItemsComponent playerItems, ref ItemsCollectorComponent collectorComponent)
         {
             var itemEntity = playerItems.items.Pop();
-
-            // todo add view animation
-
             var itemView = _viewsPool.Value.Get(itemEntity).view;
 
-            itemView.transform.SetParent(collectorComponent.view.itemsHolderParent);
-
-            itemView.transform.localPosition = Vector3.up * collectorComponent.itemConfig.YOffset * collectorComponent.Count;
-            itemView.transform.localRotation = Quaternion.identity;
+            var targetPosition = Vector3.up * collectorComponent.itemConfig.YOffset * collectorComponent.Count;
+            itemView.TweenView(collectorComponent.view.itemsHolderParent, targetPosition, Quaternion.identity);
 
             playerItems.lastInteractionTime = Time.realtimeSinceStartup;
 
@@ -116,15 +112,12 @@ namespace Test.Systems
 
             var entity = generatorComponent.producedEntities.Pop();
 
-            // todo add view animation
-
             var view = _viewsPool.Value.Get(entity).view;
             var playerView = _viewsPool.Value.Get(player).view as PlayerView;
 
-            view.transform.SetParent(playerView.stackableHolder);
+            var targetPosition = Vector3.up * _objectsConfig.Value.GetByIndex(collectedComponent.itemId).YOffset * collectedComponent.Count;
 
-            view.transform.localPosition = Vector3.up * _objectsConfig.Value.GetByIndex(collectedComponent.itemId).YOffset * collectedComponent.Count;
-            view.transform.localRotation = Quaternion.identity;
+            view.TweenView(playerView.ItemsHolder, targetPosition, Quaternion.identity);
 
             collectedComponent.items.Push(entity);
 
