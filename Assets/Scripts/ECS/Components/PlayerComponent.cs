@@ -3,5 +3,5 @@ using UnityEngine;
 
 public struct PlayerComponent
 {
-    public Rigidbody rigidbody;
+    public CharacterController controller;
 }

@@ -39,7 +39,7 @@ namespace Test.Systems
             _world.AddComponent<TransformComponent>(entity).transform = view.transform;
 
             ref var player = ref _world.AddComponent<PlayerComponent>(entity);
-            player.rigidbody = view.Rigidbody;
+            player.controller = view.CharacterController;
 
             PlayerSpawned?.Invoke(view);
         }

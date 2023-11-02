@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 4651112313609684211, guid: 1f6184ea201b5fb46bab759aad04788b, type: 3}
-  _playerSpeed: 7
-  _acceleration: 3
+  _playerSpeed: 0.065
   _interactionDistance: 2.5
