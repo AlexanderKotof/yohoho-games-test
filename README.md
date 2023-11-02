@@ -23,7 +23,7 @@ The assignment was to build a simple game with stacking system and items generat
 The assignment took 12 hours to complete of which 5 hours were spent assembling and polishing the graphic part
 
 ## Android Buid
-Can be found on Releases page
+Can be found on [Releases](https://github.com/AlexanderKotof/yohoho-games-test/releases) page
 
 ## Used plugins
-[VContainer](https://github.com/hadashiA/VContainer), DoTween, [LeoECS-Lite](https://github.com/Leopotam/ecslite)
+[VContainer](https://github.com/hadashiA/VContainer), DoTween, [LeoECS-Lite](https://github.com/Leopotam/ecslite), [LeoEcs-DI](https://github.com/Leopotam/ecslite-di)
