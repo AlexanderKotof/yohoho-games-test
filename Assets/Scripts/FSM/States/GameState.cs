@@ -1,27 +1,36 @@
-using Leopotam.EcsLite;
+п»їusing Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Test.Settings;
 using Test.Systems;
-using UnityEngine;
 
-namespace Test
+namespace Test.FSM.States
 {
-
-    public class AppStartup : MonoBehaviour
+    public class GameState : IGameState, IStateUpdate
     {
-        [SerializeField] private GameSettings _settings;
-        [SerializeField] private CollectableItemsConfig _objectsConfig;
-        [SerializeField] private SceneSettings _sceneSettings;
+        public IGameStateMachine FSM { get; private set; }
+
+        private GameSettings _settings;
+        private CollectableItemsConfig _objectsConfig;
+        private SceneSettings _sceneSettings;
 
         private IInputService _input;
 
         private EcsWorld _world;
         private EcsSystems _systems;
 
-        void Start()
+        public GameState(IGameStateMachine fsm, GameSettings gameSettings, CollectableItemsConfig itemsConfig, SceneSettings sceneSettings, IInputService input)
         {
-            _input = new KeyboardInput();
+            FSM = fsm;
 
+            _settings = gameSettings;
+            _objectsConfig = itemsConfig;
+            _sceneSettings = sceneSettings;
+
+            _input = input;
+        }
+
+        public void Enter()
+        {
             InitializeWorld();
         }
 
@@ -31,10 +40,10 @@ namespace Test
             _systems = new EcsSystems(_world);
             _systems
 #if UNITY_EDITOR
-                // Регистрируем отладочные системы по контролю за состоянием каждого отдельного мира:
+                // Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РѕС‚Р»Р°РґРѕС‡РЅС‹Рµ СЃРёСЃС‚РµРјС‹ РїРѕ РєРѕРЅС‚СЂРѕР»СЋ Р·Р° СЃРѕСЃС‚РѕСЏРЅРёРµРј РєР°Р¶РґРѕРіРѕ РѕС‚РґРµР»СЊРЅРѕРіРѕ РјРёСЂР°:
                 // .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ("events"))
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
-                // Регистрируем отладочные системы по контролю за текущей группой систем. 
+                // Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РѕС‚Р»Р°РґРѕС‡РЅС‹Рµ СЃРёСЃС‚РµРјС‹ РїРѕ РєРѕРЅС‚СЂРѕР»СЋ Р·Р° С‚РµРєСѓС‰РµР№ РіСЂСѓРїРїРѕР№ СЃРёСЃС‚РµРј. 
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem())
 #endif
                 .Add(new PlayerSpawnSystem())
@@ -49,7 +58,13 @@ namespace Test
                 .Init();
         }
 
-        private void Update()
+        public void Exit()
+        {
+            _world.Destroy();
+            _systems.Destroy();
+        }
+
+        public void Update()
         {
             _systems.Run();
         }
