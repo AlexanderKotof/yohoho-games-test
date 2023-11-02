@@ -20,7 +20,7 @@ The assignment was to build a simple game with stacking system and items generat
 8. Reward for dropped items
 
 ## Assignment completion time
-The assignment took 12 hours to complete of which 5 hours were spent assembling and polishing the graphic part
+The assignment took 10 hours to complete of which 5 hours were spent assembling and polishing the graphic part
 
 ## Android Buid
 Can be found on [Releases](https://github.com/AlexanderKotof/yohoho-games-test/releases) page
