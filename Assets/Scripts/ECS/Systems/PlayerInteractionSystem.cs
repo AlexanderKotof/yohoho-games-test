@@ -2,6 +2,7 @@
 using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Palmmedia.ReportGenerator.Core;
 using System;
 using Test.Components;
 using Test.Data;
@@ -122,6 +123,7 @@ namespace Test.Systems
             collectedComponent.items.Push(entity);
 
             collectedComponent.lastInteractionTime = Time.realtimeSinceStartup;
+            generatorComponent.spawnTimer = Time.realtimeSinceStartup;
         }
 
         private bool DistanceCheck(int entity, int otherEntity, float maxDistance)
