@@ -16,10 +16,19 @@ MonoBehaviour:
   - _id: 0
     _itemPrefab: {fileID: 1541251464402106657, guid: 8563a0e52d7c8cc4689cae122542faf4, type: 3}
     _spawnTime: 3
-    _spendingTime: 5
-    _maxPlayerStack: 5
-    _maxGeneratorStack: 10
+    _spendingTime: 8
+    _maxPlayerStack: 4
+    _maxGeneratorStack: 4
     _maxCollectorStack: 1
-    _yOffset: 0.33
+    _yOffset: 0.6
     _coinsReward: 5
+  - _id: 1
+    _itemPrefab: {fileID: 1541251464402106657, guid: 16e254ddec825d14694fa823e351940e, type: 3}
+    _spawnTime: 5
+    _spendingTime: 10
+    _maxPlayerStack: 2
+    _maxGeneratorStack: 2
+    _maxCollectorStack: 1
+    _yOffset: 0.45
+    _coinsReward: 10
   _interactionTime: 0.1
