@@ -13,13 +13,10 @@ namespace Test.Settings
 
         [SerializeField] private float _interactionDistance;
 
-        [SerializeField] private Bounds _levelBounds;
-
         public PlayerView PlayerPrefab => _playerPrefab;
         public float PlayerSpeed => _playerSpeed;
         public float Acceleration => _acceleration;
         public float InteractionDistance => _interactionDistance;
-        public Bounds LevelBounds => _levelBounds;
     }
 }
 
