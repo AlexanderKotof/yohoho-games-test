@@ -24,8 +24,8 @@ MonoBehaviour:
     _coinsReward: 5
   - _id: 1
     _itemPrefab: {fileID: 1541251464402106657, guid: 16e254ddec825d14694fa823e351940e, type: 3}
-    _spawnTime: 5
-    _spendingTime: 10
+    _spawnTime: 10
+    _spendingTime: 20
     _maxPlayerStack: 2
     _maxGeneratorStack: 2
     _maxCollectorStack: 1
