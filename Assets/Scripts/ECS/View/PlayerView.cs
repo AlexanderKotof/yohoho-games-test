@@ -14,16 +14,19 @@ namespace Test.Views
         public CharacterController CharacterController => _characterController;
         public Transform ItemsHolder => _itemsHolder;
 
+        private const string _movingAnimatorBoolName = "IsMoving";
+        private const string _hasItemsAnimatorBoolName = "HasItems";
+
         private void Update()
         {
             if (World == null)
                 return;
 
             var moving = World.ReadComponent<MovementComponent>(Entity).direction != Vector3.zero;
-            _animator.SetBool("IsMoving", moving);
+            _animator.SetBool(_movingAnimatorBoolName, moving);
 
             var hasItems = World.ReadComponent<PlayerItemsComponent>(Entity).Count > 0;
-            _animator.SetBool("HasItems", hasItems);
+            _animator.SetBool(_hasItemsAnimatorBoolName, hasItems);
         }
     }
 }
