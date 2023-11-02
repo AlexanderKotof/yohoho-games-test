@@ -4,6 +4,7 @@ using ECS.View;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using System;
+using Test.ObjectPooling;
 using Test.Settings;
 using Test.Views;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace Test.Systems
 
         public void InstantiatePlayerView(int entity, PlayerView prefab, Vector3 position, Quaternion rotation)
         {
-            var view = PlayerView.Instantiate(prefab, position, rotation);
+            var view = ObjectPoolManager.Spawn(prefab, position, rotation);
             view.Init(_world, entity);
 
             _world.AddComponent<ViewComponent>(entity).view = view;

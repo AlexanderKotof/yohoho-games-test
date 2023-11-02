@@ -1,20 +1,21 @@
 ﻿using ECS.Components;
 using ECS.View;
 using Leopotam.EcsLite;
+using Test.ObjectPooling;
 using UnityEngine;
 
 namespace ECS.Utils
 {
     public static class EntityViewUtils
     {
-        public static EntityView InstantiateView(this EcsWorld world, int entity, GameObject prefab)
+        public static EntityView InstantiateView(this EcsWorld world, int entity, EntityView prefab)
         {
             return world.InstantiateView(entity, prefab, Vector3.zero, Quaternion.identity);
         }
 
-        public static EntityView InstantiateView(this EcsWorld world, int entity, GameObject prefab, Vector3 position, Quaternion rotation)
+        public static EntityView InstantiateView(this EcsWorld world, int entity, EntityView prefab, Vector3 position, Quaternion rotation)
         {
-            var view = Object.Instantiate(prefab, position, rotation).AddComponent<EntityView>();
+            var view = ObjectPoolManager.Spawn(prefab, position, rotation);
             view.Init(world, entity);
 
             world.AddComponent<ViewComponent>(entity).view = view;

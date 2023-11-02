@@ -1,7 +1,9 @@
 using Cinemachine;
+using System;
 using Test.Data;
 using Test.FSM;
 using Test.FSM.States;
+using Test.ObjectPooling;
 using Test.Settings;
 using Test.UI;
 using UnityEngine;
@@ -26,10 +28,17 @@ namespace Test
             BindSettings(builder);
             BindInput(builder);
 
+            BindObjectsPool(builder);
+
             BindUI(builder);
             BindCamera(builder);
 
             BindStateMachine(builder);
+        }
+
+        private void BindObjectsPool(IContainerBuilder builder)
+        {
+            builder.Register<ObjectPoolManager>(Lifetime.Singleton).AsImplementedInterfaces();
         }
 
         private void BindPlayerData(IContainerBuilder builder)

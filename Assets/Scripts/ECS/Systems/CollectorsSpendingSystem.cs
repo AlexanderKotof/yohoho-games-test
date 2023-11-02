@@ -2,16 +2,13 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Test.Components;
-using Test.Settings;
+using Test.ObjectPooling;
 using UnityEngine;
 
 namespace Test.Systems
 {
     public class CollectorsSpendingSystem : IEcsSystem, IEcsRunSystem
     {
-        private EcsCustomInject<SceneSettings> _sceneSettings = default;
-        private EcsCustomInject<CollectableItemsConfig> _objectsConfig = default;
-
         private EcsFilterInject<Inc<ItemsCollectorComponent>> _collectorsFilter = default;
         private EcsPoolInject<ItemsCollectorComponent> _collectorsPool = default;
 
@@ -37,7 +34,7 @@ namespace Test.Systems
 
                 var view = _viewPool.Value.Get(itemEntity).view;
 
-                GameObject.Destroy(view.gameObject);
+                ObjectPoolManager.Despawn(view);
 
                 _world.Value.DelEntity(itemEntity);
             }

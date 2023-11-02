@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECS.View;
+using System;
 using UnityEngine;
 
 namespace Test.Settings
@@ -10,7 +11,7 @@ namespace Test.Settings
         public class CollectableObjectConfig
         {
             [SerializeField] private int _id;
-            [SerializeField] private GameObject _itemPrefab;
+            [SerializeField] private EntityView _itemPrefab;
             [SerializeField] private float _spawnTime;
             [SerializeField] private float _spendingTime;
             [SerializeField] private int _maxPlayerStack;
@@ -20,7 +21,7 @@ namespace Test.Settings
             [SerializeField] private int _coinsReward;
 
             public int Id => _id;
-            public GameObject ObjectPrefab => _itemPrefab;
+            public EntityView ObjectPrefab => _itemPrefab;
             public float SpawnTime => _spawnTime;
             public float SpendingTime => _spendingTime;
             public int MaxPlayerStack => _maxPlayerStack;

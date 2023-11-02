@@ -1,8 +1,5 @@
-﻿using Cinemachine;
-using ECS.Components;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using Test.Data;
 using Test.Settings;
 using Test.Systems;
 
@@ -27,6 +24,7 @@ namespace Test.FSM.States
             _settings = gameSettings;
             _objectsConfig = itemsConfig;
             _sceneSettings = sceneSettings;
+
             _input = input;
         }
 
