@@ -2,13 +2,10 @@
 using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using Palmmedia.ReportGenerator.Core;
 using System;
 using Test.Components;
-using Test.Data;
 using Test.Settings;
 using Test.Views;
-using TMPro;
 using UnityEngine;
 
 namespace Test.Systems
