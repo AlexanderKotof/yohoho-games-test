@@ -26,4 +26,4 @@ The assignment took 10 hours to complete of which 5 hours were spent assembling 
 Can be found on [Releases](https://github.com/AlexanderKotof/yohoho-games-test/releases) page
 
 ## Used plugins
-[VContainer](https://github.com/hadashiA/VContainer), DoTween, [LeoECS-Lite](https://github.com/Leopotam/ecslite), [LeoEcs-DI](https://github.com/Leopotam/ecslite-di)
+[VContainer](https://github.com/hadashiA/VContainer), DoTween, [LeoECS-Lite](https://github.com/Leopotam/ecslite), [LeoEcs-DI](https://github.com/Leopotam/ecslite-di), Cinemachine
