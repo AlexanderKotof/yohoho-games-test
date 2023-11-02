@@ -62,7 +62,7 @@ namespace Test.Systems
                 if (generatorComponent.GeneratedCount <= 0)
                     continue;
 
-                if (collectedComponent.itemId != -1 && collectedComponent.itemId != generatorComponent.stackableObjectConfig.Id)
+                if (collectedComponent.Count > 0 && collectedComponent.itemId != -1 && collectedComponent.itemId != generatorComponent.stackableObjectConfig.Id)
                     continue;
 
                 if (collectedComponent.Count >= generatorComponent.stackableObjectConfig.MaxPlayerStack)
