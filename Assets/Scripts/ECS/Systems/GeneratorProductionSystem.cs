@@ -2,15 +2,12 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Test.Components;
-using Test.Settings;
 using UnityEngine;
 
-namespace Test
+namespace Test.Systems
 {
     public class GeneratorProductionSystem : IEcsSystem, IEcsRunSystem
     {
-        private EcsCustomInject<CollectableItemsConfig> _itemsConfig = default;
-
         private EcsFilterInject<Inc<GeneratorComponent>> _generatorsFilter = default;
         private EcsPoolInject<GeneratorComponent> _generatorPool = default;
 

@@ -1,8 +1,8 @@
 using Cinemachine;
-using System;
 using Test.Data;
 using Test.FSM;
 using Test.FSM.States;
+using Test.Input;
 using Test.ObjectPooling;
 using Test.Settings;
 using Test.UI;
@@ -59,6 +59,7 @@ namespace Test
         private void BindUI(IContainerBuilder builder)
         {
             builder.RegisterInstance(_uiManager);
+            builder.Register<GameViewPresenter>(Lifetime.Singleton).AsImplementedInterfaces();
         }
 
         private void BindSettings(IContainerBuilder builder)
@@ -70,7 +71,7 @@ namespace Test
 
         private void BindInput(IContainerBuilder builder)
         {
-            builder.Register<IInputService, KeyboardInput>(Lifetime.Singleton);
+            builder.Register<IInputService, MobileInputService>(Lifetime.Singleton);
         }
 
         private void BindStateMachine(IContainerBuilder builder)
