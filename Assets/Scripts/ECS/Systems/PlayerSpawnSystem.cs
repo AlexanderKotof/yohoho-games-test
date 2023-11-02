@@ -1,7 +1,9 @@
 ﻿using ECS.Components;
 using ECS.Utils;
+using ECS.View;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using System;
 using Test.Settings;
 using Test.Views;
 using UnityEngine;
@@ -13,6 +15,8 @@ namespace Test.Systems
         private EcsCustomInject<GameSettings> _gameSettings = default;
         private EcsCustomInject<SceneSettings> _sceneSettings = default;
         private EcsWorld _world;
+
+        public static event Action<EntityView> PlayerSpawned;
 
         public void Init(IEcsSystems systems)
         {
@@ -35,6 +39,8 @@ namespace Test.Systems
 
             ref var player = ref _world.AddComponent<PlayerComponent>(entity);
             player.rigidbody = view._rigidbody;
+
+            PlayerSpawned?.Invoke(view);
         }
     }
 }
