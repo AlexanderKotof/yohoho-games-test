@@ -1,3 +1,5 @@
+using Cinemachine;
+using Test.Data;
 using Test.FSM;
 using Test.FSM.States;
 using Test.Settings;
@@ -13,15 +15,41 @@ namespace Test
         [SerializeField] private GameSettings _settings;
         [SerializeField] private CollectableItemsConfig _objectsConfig;
         [SerializeField] private SceneSettings _sceneSettings;
+        [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private UIManager _uiManager;
+
+        private PlayerData _playerData;
 
         protected override void Configure(IContainerBuilder builder)
         {
+            BindPlayerData(builder);
             BindSettings(builder);
-
             BindInput(builder);
 
-            InitStateMachine(builder);
+            BindUI(builder);
+            BindCamera(builder);
+
+            BindStateMachine(builder);
+        }
+
+        private void BindPlayerData(IContainerBuilder builder)
+        {
+            // TODO Load data
+            _playerData = new PlayerData();
+
+            builder.RegisterInstance(_playerData);
+            builder.Register<PlayerDataHandler>(Lifetime.Singleton).AsImplementedInterfaces();
+        }
+
+        private void BindCamera(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_camera);
+            builder.Register<CameraInitializer>(Lifetime.Singleton).AsImplementedInterfaces();
+        }
+
+        private void BindUI(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_uiManager);
         }
 
         private void BindSettings(IContainerBuilder builder)
@@ -29,7 +57,6 @@ namespace Test
             builder.RegisterInstance(_settings);
             builder.RegisterInstance(_objectsConfig);
             builder.RegisterInstance(_sceneSettings);
-            builder.RegisterInstance(_uiManager);
         }
 
         private void BindInput(IContainerBuilder builder)
@@ -37,7 +64,7 @@ namespace Test
             builder.Register<IInputService, KeyboardInput>(Lifetime.Singleton);
         }
 
-        private void InitStateMachine(IContainerBuilder builder)
+        private void BindStateMachine(IContainerBuilder builder)
         {
             builder.Register<GameStateMachine>(Lifetime.Singleton).AsImplementedInterfaces();
 

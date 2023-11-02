@@ -2,7 +2,9 @@
 using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using System;
 using Test.Components;
+using Test.Data;
 using Test.Settings;
 using Test.Views;
 using UnityEngine;
@@ -25,6 +27,9 @@ namespace Test.Systems
 
         private EcsPoolInject<GeneratorComponent> _generatorPool = default;
         private EcsPoolInject<ItemsCollectorComponent> _collectorPool = default;
+
+
+        public static event Action<CollectableItemsConfig.CollectableObjectConfig> ItemReceivedByCollector;
 
 
         public void Run(IEcsSystems systems)
@@ -101,6 +106,8 @@ namespace Test.Systems
 
             collectorComponent.spendTime = Time.realtimeSinceStartup + collectorComponent.itemConfig.SpendingTime;
             collectorComponent.items.Push(itemEntity);
+
+            ItemReceivedByCollector?.Invoke(collectorComponent.itemConfig);
         }
 
         private void AddItemToPlayerStack(int player, ref PlayerItemsComponent collectedComponent, ref GeneratorComponent generatorComponent)

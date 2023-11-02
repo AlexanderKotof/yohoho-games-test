@@ -17,6 +17,7 @@ namespace Test.Settings
             [SerializeField] private int _maxGeneratorStack;
             [SerializeField] private int _maxCollectorStack;
             [SerializeField] private float _yOffset;
+            [SerializeField] private int _coinsReward;
 
             public int Id => _id;
             public GameObject ObjectPrefab => _itemPrefab;
@@ -25,6 +26,7 @@ namespace Test.Settings
             public int MaxPlayerStack => _maxPlayerStack;
             public int MaxGeneratorStack => _maxGeneratorStack;
             public int MaxCollectorStack => _maxCollectorStack;
+            public int CoinsReward => _coinsReward;
             public float YOffset => _yOffset;
         }
 
