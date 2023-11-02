@@ -9,14 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9861e69ce752647aa035641a9d7f57, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f41e62abb8c1f47893681cdc815edc, type: 3}
   m_Name: StackableObjectsConfig
   m_EditorClassIdentifier: 
-  _prespawnObjectsCount: 5
-  _spawnRate: 5
   _stackableObjects:
   - _id: 0
-    _objectPrefab: {fileID: 3006295780565636299, guid: 8563a0e52d7c8cc4689cae122542faf4, type: 3}
-    _collectorPrefab: {fileID: 3539224774255276817, guid: 12228dbd62aeb1745bb7e1d6e11f26dc, type: 3}
-    _maxStack: 0
-    _yOffset: 0
+    _itemPrefab: {fileID: 1541251464402106657, guid: 8563a0e52d7c8cc4689cae122542faf4, type: 3}
+    _spawnTime: 3
+    _spendingTime: 5
+    _maxPlayerStack: 5
+    _maxGeneratorStack: 10
+    _maxCollectorStack: 1
+    _yOffset: 0.33
+    _coinsReward: 5
+  _interactionTime: 0.1
