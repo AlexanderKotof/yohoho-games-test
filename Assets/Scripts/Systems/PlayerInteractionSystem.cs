@@ -2,7 +2,6 @@
 using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using System;
 using Test.Components;
 using Test.Settings;
 using Test.Views;
@@ -27,13 +26,15 @@ namespace Test.Systems
         private EcsPoolInject<GeneratorComponent> _generatorPool = default;
         private EcsPoolInject<ItemsCollectorComponent> _collectorPool = default;
 
-        private EcsWorldInject _world = default;
 
         public void Run(IEcsSystems systems)
         {
             foreach (var player in _playerFilter.Value)
             {
                 ref var playerItems = ref _collectedItemsPool.Value.GetOrAddComponent(player);
+
+                if (playerItems.lastInteractionTime + _objectsConfig.Value.InteractionTime > Time.realtimeSinceStartup)
+                    continue;
 
                 GeneratorsInteracton(player, ref playerItems);
 
@@ -96,7 +97,9 @@ namespace Test.Systems
             itemView.transform.localPosition = Vector3.up * collectorComponent.itemConfig.YOffset * collectorComponent.Count;
             itemView.transform.localRotation = Quaternion.identity;
 
-            collectorComponent.spendTime = Time.realtimeSinceStartup + collectorComponent.itemConfig.SpendingRate;
+            playerItems.lastInteractionTime = Time.realtimeSinceStartup;
+
+            collectorComponent.spendTime = Time.realtimeSinceStartup + collectorComponent.itemConfig.SpendingTime;
             collectorComponent.items.Push(itemEntity);
         }
 
@@ -117,6 +120,8 @@ namespace Test.Systems
             view.transform.localRotation = Quaternion.identity;
 
             collectedComponent.items.Push(entity);
+
+            collectedComponent.lastInteractionTime = Time.realtimeSinceStartup;
         }
 
         private bool DistanceCheck(int entity, int otherEntity, float maxDistance)

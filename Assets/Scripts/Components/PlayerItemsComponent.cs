@@ -7,6 +7,9 @@ namespace Test.Components
     {
         public int itemId;
         public Stack<int> items;
+
+        public float lastInteractionTime;
+
         public readonly int Count => items.Count;
 
         public void AutoReset(ref PlayerItemsComponent c)

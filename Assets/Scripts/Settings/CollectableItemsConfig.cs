@@ -11,8 +11,8 @@ namespace Test.Settings
         {
             [SerializeField] private int _id;
             [SerializeField] private GameObject _itemPrefab;
-            [SerializeField] private float _spawnRate;
-            [SerializeField] private float _spendingRate;
+            [SerializeField] private float _spawnTime;
+            [SerializeField] private float _spendingTime;
             [SerializeField] private int _maxPlayerStack;
             [SerializeField] private int _maxGeneratorStack;
             [SerializeField] private int _maxCollectorStack;
@@ -20,8 +20,8 @@ namespace Test.Settings
 
             public int Id => _id;
             public GameObject ObjectPrefab => _itemPrefab;
-            public float SpawnRate => _spawnRate;
-            public float SpendingRate => _spendingRate;
+            public float SpawnTime => _spawnTime;
+            public float SpendingTime => _spendingTime;
             public int MaxPlayerStack => _maxPlayerStack;
             public int MaxGeneratorStack => _maxGeneratorStack;
             public int MaxCollectorStack => _maxCollectorStack;
@@ -29,7 +29,11 @@ namespace Test.Settings
         }
 
         [SerializeField] private CollectableObjectConfig[] _stackableObjects;
+        [SerializeField] private float _interactionTime;
+
         public CollectableObjectConfig[] StackableObjects => _stackableObjects;
+        public float InteractionTime => _interactionTime;
+
 
         public CollectableObjectConfig GetByIndex(int index)
         {

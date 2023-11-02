@@ -5,7 +5,7 @@ using Test.Components;
 using Test.Settings;
 using UnityEngine;
 
-namespace Test
+namespace Test.Systems
 {
     public class CollectorsSpendingSystem : IEcsSystem, IEcsRunSystem
     {
@@ -31,7 +31,7 @@ namespace Test
                 if (collectorComponent.spendTime > Time.realtimeSinceStartup)
                     continue;
 
-                collectorComponent.spendTime = Time.realtimeSinceStartup + collectorComponent.itemConfig.SpendingRate;
+                collectorComponent.spendTime = Time.realtimeSinceStartup + collectorComponent.itemConfig.SpendingTime;
                
                 var itemEntity = collectorComponent.items.Pop();
 

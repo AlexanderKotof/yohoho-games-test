@@ -2,7 +2,7 @@
 using Test.Settings;
 using Test.Views;
 
-namespace Test
+namespace Test.Components
 {
     public struct GeneratorComponent
     {
@@ -13,7 +13,7 @@ namespace Test
         public float spawnTimer;
 
         public Stack<int> producedEntities;
-        public int GeneratedCount => producedEntities.Count;
+        public readonly int GeneratedCount => producedEntities.Count;
     }
 }
 

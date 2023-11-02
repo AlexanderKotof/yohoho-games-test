@@ -22,7 +22,7 @@ namespace Test
             {
                 ref var generator = ref _generatorPool.Value.Get(entity);
 
-                if (Time.realtimeSinceStartup < generator.spawnTimer + generator.stackableObjectConfig.SpawnRate)
+                if (Time.realtimeSinceStartup < generator.spawnTimer + generator.stackableObjectConfig.SpawnTime)
                     continue;
 
                 if (generator.GeneratedCount >= generator.stackableObjectConfig.MaxGeneratorStack)

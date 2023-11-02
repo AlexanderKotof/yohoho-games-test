@@ -1,6 +1,7 @@
 ﻿using ECS.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Test.Components;
 using Test.Settings;
 using Test.Views;
 using UnityEngine;
