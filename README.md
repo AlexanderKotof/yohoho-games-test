@@ -1,6 +1,6 @@
 # Stack It! 
 ## Test Assignment 
-The assignment was to build a simple game with stacking system and items generators like in references [Burger Please](https://play.google.com/store/apps/details?id=io.supercent.burgeridle), [My Perfect Hotel](https://play.google.com/store/apps/details?id=com.master.hotelmaster) using LeoEcs framework
+The assignment was to build a simple game with stacking system and items generators like in references [Burger Please](https://play.google.com/store/apps/details?id=io.supercent.burgeridle), [My Perfect Hotel](https://play.google.com/store/apps/details?id=com.master.hotelmaster) using LeoEcs framework.
 
 ## Tasks:
 1. Player character controlling with screen joystick
@@ -14,10 +14,11 @@ The assignment was to build a simple game with stacking system and items generat
 2. Player movement with screen joystick
 3. Collecting and droping items
 4. Items generators, collectors
-5. Player and items animations
-6. Minimalistic UI
-7. Level built
-8. Reward for dropped items
+5. Items Config - for easy adding new items
+6. Player and items animations
+7. Minimalistic UI
+8. Level built
+9. Reward for dropped items
 
 ## Assignment completion time
 The assignment took 10 hours to complete of which 5 hours were spent assembling and polishing the graphic part
